@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+  <meta charset="UTF-8">
+  <title>Proyecto-DaWeb</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="../CSS/style.css">
+
+</head>
+<body>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Registro</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>Introduzca sus datos para el registro</span>
+			<input type="text" placeholder="Nombre" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Contraseña" />
+			<button>Registrar</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Iniciar sesión</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>o utilice su cuenta</span>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Contraseña" />
+			
+			<button>Iniciar sesión</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>¿Ya tiene una cuenta?</h1>
+				<p>Introduzca sus datos personales para inciar sesión</p>
+				
+				<button class="ghost" id="signIn">Iniciar sesión</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>¿No tiene una cuenta?</h1>
+				<p>Introduzca sus datos personales para registrarse</p>
+				<button class="ghost" id="signUp">Registrar</button>     
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Scripts -->
+  <script  src="../JS/script.js"></script>
+
+</body>
+</html>
