@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br/>
 <p align="center">
-    <img src="https://i.imgur.com/tIfYaVl.jpg" alt="Logo" width="207" height="231">
+    <img src="https://i.imgur.com/U0MB0Bl.png" alt="Logo" width="231" height="231">
     <h3 align="center">Practica Final – Desarrollo de Aplicaciones Web 21/22</h3>
     <p align="center">
          Web para la valoración de la accesibilidad a comercios y plazas de aparcamiento entorno a un sitio de interés de una ciudad
