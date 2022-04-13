@@ -20,6 +20,6 @@ async function getAllUsuarios(connection){
     return rows;
 }
 
-exports.getConnection=getConnection
-exports.registrarUsuario=registrarUsuario
-exports.getAllUsuarios=getAllUsuarios
+exports.getConnection = getConnection
+exports.registrarUsuario = registrarUsuario
+exports.getAllUsuarios = getAllUsuarios
