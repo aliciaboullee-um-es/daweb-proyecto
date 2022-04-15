@@ -1,13 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const User = require('../models/users');
+const router = express.Router();
+const {UsersRepository} = require('../persistence/repository');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  session=req.session;
-    if(session.mail!=null){
-        res.send("Welcome User <a href=\'/logout'>click to logout</a>");
-    }else
-    res.redirect('../login')
+router.get('/', (req, res) => {
+    res.redirect('users/singin');
 });
 
 module.exports = router;
