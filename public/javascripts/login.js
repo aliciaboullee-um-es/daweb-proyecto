@@ -22,13 +22,11 @@ function login(e) {
         .then(function(response) {
             console.log(response.status);
             if(response.status === 200) {
-                location.href = "/users/index"
+                location.href = "/"
             }
         else{
-            alert('¡Credenciales inválidas!')
+            return swal("Operación fallida", "Credenciales inválidas", "error");
         }})
-        .then(resultado => {return resultado.text()})
-        
 
 }
 
@@ -44,7 +42,13 @@ function sendContact(e) {
         redirect : 'follow',
         headers : new Headers({'Content-Type':'application/json'}),
         body: JSON.stringify({'name': name, 'mail':mail, 'contrasena':pass })})
-        .then(resultado => {return resultado.text()})
+        .then(resultado => {return resultado.json()})
+        .then(fjson => {
+            if(fjson['type'] == 'ok')
+                return swal("Operación exitosa", "Se ha completado el registro correctamente.", "success");
+            else 
+                return swal("Operación fallida", "El registro se ha interrumpido, ya que existe una cuenta con ese correo.", "error");
+        })
 
 }
 

@@ -6,7 +6,7 @@ var currentUser = undefined;
 class UsersController {
 
     static async create(username, passwd,email) {
-        var res = await UsersRepository.get(username);
+        var res = await UsersRepository.get(email);
         if(res !== undefined) 
             return false
         

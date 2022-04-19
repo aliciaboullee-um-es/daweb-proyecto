@@ -2,9 +2,9 @@ const pool = require("./helperMYSQL");
 
 class UsersRepository {
 
-  static async get(username) {
+  static async get(email) {
     var res = await pool.promise()
-      .query("SELECT * FROM users u WHERE u.username = ? ", [username]);
+      .query("SELECT * FROM users u WHERE u.mail = ? ", [email]);
     return res[0][0];
   }
 

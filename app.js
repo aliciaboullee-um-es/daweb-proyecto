@@ -8,6 +8,7 @@ const session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var mapsRouter = require('./routes/maps');
 //var loginRouter = require('./routes/login')
 
 // inicializaciones
@@ -38,6 +39,7 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/maps', mapsRouter);
 //app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
