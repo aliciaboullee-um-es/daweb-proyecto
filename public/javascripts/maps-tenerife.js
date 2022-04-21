@@ -1,6 +1,6 @@
 function getSitiosInteres(){
 
-  fetch('http://localhost:8080/api/ciudades/1bfca02d-8828-4106-b26f-afa1636ea931/sitiosInteres',{
+  fetch('http://localhost:8080/api/ciudades/5d36d5c2-241a-4148-aec9-457d35c6aa94/sitiosInteres',{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -16,14 +16,14 @@ function getSitiosInteres(){
 // Initialize and add the map
 async function initMap() {
   // The location of Uluru
-  const uluru = { lat:36.7196, lng: -4.42002 };
+  const uluru = { lat:28.4698, lng: -16.2549 };
   // The map, centered at Uluru
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 13,
     center: uluru,
   });
   
-  let sitios = await fetch('http://localhost:8080/api/ciudades/1bfca02d-8828-4106-b26f-afa1636ea931/sitiosInteres',{
+  let sitios = await fetch('http://localhost:8080/api/ciudades/5d36d5c2-241a-4148-aec9-457d35c6aa94/sitiosInteres',{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -68,7 +68,7 @@ async function initMap() {
       '<h1 id="firstHeading" class="firstHeading">' + sitios[i]['resumen']['nombre'] +'</h1>' +
       '<div id="bodyContent">' +
       "<p>" + sitios[i]['resumen']['comentario'] + "</p>" +
-      '<p>Attribution: Málaga ' +
+      '<p>Attribution: Sta Cruz Tenerife ' +
       
       links +
       ".</p>" +
