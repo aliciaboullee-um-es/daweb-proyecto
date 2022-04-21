@@ -7,16 +7,9 @@ function getSitiosInteres(){
       'accept': 'application/json'
     }
   })
-  .then(res => {
-    let j = res.json();
-    console.log(j);
-    console.log(j['sitios']);
-    let ar = [];
-    for(let i=0; i<res.length-1; i++)
-    ar.push(res[i]);
-    return ar;
-  })
-  .then(res => console.log(res))
+  .then(res => res.json())
+  .then(res => res.sitios)
+  .then(res => console.log(res.length))
   .catch( err => console.error(err));
 }
 
@@ -26,21 +19,67 @@ async function initMap() {
     const uluru = { lat: 37.6713, lng: -1.69879 };
     // The map, centered at Uluru
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 12,
+      zoom: 13,
       center: uluru,
     });
     
-    let sitios = await getSitiosInteres();
-    let markers = [];
+    let sitios = await fetch('http://localhost:8080/api/ciudades/2befa17a-27e9-4a6c-81d4-64ba990049fb/sitiosInteres',{
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'accept': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+      let sitios = res.sitios;
+      let markers = [];
     
-    for(let i=0; i<sitios?.length-1 || 0;i++){
-      let pos = { lat: sitios[i]['resumen']['latitud'], lng: sitios[i]['resumen']['longitud'] };
-      console.log("SE ANADe");
-      markers.push(new google.maps.Marker({
-        position: pos,
-        map: map,
-      }));
-    }
+      for(let i=0; i<sitios?.length-1 || 0;i++){
+
+        let links = "";
+        let linkExternos = sitios[i]['resumen']['linkExternos'];
+        for(let i=0; i<linkExternos?.length-1 || 0;i++){
+          links += ',<a href=' + sitios[i]['resumen']['linkExternos'][i] + '>' + sitios[i]['resumen']['linkExternos'][i] + '</a> '
+        }
+
+
+        let pos = { lat: sitios[i]['resumen']['latitud'], lng: sitios[i]['resumen']['longitud'] };
+
+        //Dialogo de marker
+        const contentString ='<div id="content">' +
+        '<div id="siteNotice">' +
+        "</div>" +
+        '<h1 id="firstHeading" class="firstHeading">' + sitios[i]['resumen']['nombre'] +'</h1>' +
+        '<div id="bodyContent">' +
+        "<p>" + sitios[i]['resumen']['comentario'] + "</p>" +
+        '<p>Attribution: Lorca' + links +
+        ".</p>" +
+        "</div>" +
+        "</div>";
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+        });
+
+        //Se añade el marker
+        markers.push(new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: sitios[i]['resumen']['nombre']
+        }));
+
+        //LIstener que abre el dialogo
+        markers[i].addListener("click", () => {
+          infowindow.open({
+            anchor: markers[i],
+            map,
+            shouldFocus: false,
+          });
+        });
+      }
+    })
+    .catch( err => console.error(err));
+    
 
   }
   window.initMap = initMap;
