@@ -36,15 +36,28 @@ async function initMap() {
       let markers = [];
     
       for(let i=0; i<sitios?.length-1 || 0;i++){
+        if (typeof(sitios) !== 'undefined') {
 
         let links = "";
         let linkExternos = sitios[i]['resumen']['linkExternos'];
-        for(let i=0; i<linkExternos?.length-1 || 0;i++){
-          links += ',<a href=' + sitios[i]['resumen']['linkExternos'][i] + '>' + sitios[i]['resumen']['linkExternos'][i] + '</a> '
+
+        if (linkExternos !== undefined){
+          for(let i=0; i<linkExternos?.length-1 || 0;i++){
+            if (sitios[i]['resumen']['linkExternos'] !== undefined){
+            let cadena =  new String(sitios[i]['resumen']['linkExternos'][i])
+            if(cadena.toString() != 'undefined'){
+            //console.log(cadena.toString())
+            links += '<a href=' +cadena.toString() + '>' + cadena.toString() + '</a> '
+            links +=  '<br> '
+            }
         }
+      }
+        }
+       
 
 
         let pos = { lat: sitios[i]['resumen']['latitud'], lng: sitios[i]['resumen']['longitud'] };
+        
 
         //Dialogo de marker
         const contentString ='<div id="content">' +
@@ -53,7 +66,9 @@ async function initMap() {
         '<h1 id="firstHeading" class="firstHeading">' + sitios[i]['resumen']['nombre'] +'</h1>' +
         '<div id="bodyContent">' +
         "<p>" + sitios[i]['resumen']['comentario'] + "</p>" +
-        '<p>Attribution: Lorca' + links +
+        '<p>Attribution: Lorca ' +
+        
+        links +
         ".</p>" +
         "</div>" +
         "</div>";
@@ -77,7 +92,8 @@ async function initMap() {
           });
         });
       }
-    })
+    }
+  })
     .catch( err => console.error(err));
     
 
