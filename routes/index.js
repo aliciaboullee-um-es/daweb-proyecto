@@ -16,4 +16,11 @@ router.get('/sitiosinteres', (req, res) => {
     else res.redirect('users/singin');
 });
 
+router.get('/aparcamientos', (req, res) => {
+    if(userController.getCurrentUser() != undefined){
+        res.render('layouts/aparcamientos', {title : 'Aparcamientos'});
+    }
+    else res.redirect('users/singin');
+});
+
 module.exports = router;
