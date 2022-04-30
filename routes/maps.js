@@ -11,7 +11,7 @@ router.get('/lorca', (req, res) => {
 
 router.get('/malaga', (req, res) => {
     if(userController.getCurrentUser() != undefined){
-        res.render('maps/malaga', {title : 'Málaga'});
+        res.render('maps/malaga');
     }
     else res.redirect('../users/singin');
 });
