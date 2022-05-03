@@ -64,7 +64,21 @@ async function initMap() {
         '<div id="siteNotice">' +
         "</div>" +
         '<h1 id="firstHeading" class="firstHeading">' + sitios[i]['resumen']['direccion'] +'</h1>' +
-        '<div id="bodyContent">' +
+        '<div id="bodyContent">' + "<br>"+
+        'Calificar: '+
+        '<p class="clasificacion" style="padding-right: 300px;"> '+
+        
+        '<input id="radio1" type="radio" name="estrellas" value="5" onclick="valorar(5)">'+
+        '<label for="radio1">★</label>'+
+        '<input id="radio2" type="radio" name="estrellas" value="4" onclick="valorar(4)">'+
+        '<label for="radio2">★</label>'+
+        '<input id="radio3" type="radio" name="estrellas" value="3" onclick="valorar(3)">'+
+        '<label for="radio3">★</label>'+
+        '<input id="radio4" type="radio" name="estrellas" value="2" onclick="valorar(2)">'+
+        '<label for="radio4">★</label>'+
+        '<input id="radio5" type="radio" name="estrellas" value="1" onclick="valorar(1)">'+
+        '<label for="radio5">★</label>'+
+      '</p>'+
         '<p>Attribution: Málaga ' +
         
         links +
@@ -97,4 +111,24 @@ async function initMap() {
     
 
   }
+  function valorar(valoracion){
+
+    
+    swal({
+      title: '¿Desea emitir una valoración de '+valoracion+'?',
+      icon: 'warning',
+      buttons: true,
+      buttons: ['Cancelar','Confirmar'],
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal(
+          "Operación exitosa", "Se ha valorado el aparcamiento.", "success"
+        )
+
+        //TODO: Aquí hay que llamar a la api para emitir la valoración
+      } 
+    })
+
+  }
+  window.valorar = valorar;
   window.initMap = initMap;
