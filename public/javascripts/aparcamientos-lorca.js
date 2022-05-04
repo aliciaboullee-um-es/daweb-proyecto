@@ -64,21 +64,7 @@ async function initMap() {
         '<div id="siteNotice">' +
         "</div>" +
         '<h1 id="firstHeading" class="firstHeading">' + sitios[i]['resumen']['direccion'] +'</h1>' +
-        '<div id="bodyContent">' + "<br>"+
-        'Calificar: '+
-        '<p class="clasificacion" style="padding-right: 300px;"> '+
-        
-        '<input id="radio1" type="radio" name="estrellas" value="5" onclick="valorar(5)">'+
-        '<label for="radio1">★</label>'+
-        '<input id="radio2" type="radio" name="estrellas" value="4" onclick="valorar(4)">'+
-        '<label for="radio2">★</label>'+
-        '<input id="radio3" type="radio" name="estrellas" value="3" onclick="valorar(3)">'+
-        '<label for="radio3">★</label>'+
-        '<input id="radio4" type="radio" name="estrellas" value="2" onclick="valorar(2)">'+
-        '<label for="radio4">★</label>'+
-        '<input id="radio5" type="radio" name="estrellas" value="1" onclick="valorar(1)">'+
-        '<label for="radio5">★</label>'+
-      '</p>'+
+        '<div id="bodyContent">' + "<br>" + 
         '<p>Attribution: Lorca ' +
         
         links +
@@ -103,6 +89,7 @@ async function initMap() {
             map,
             shouldFocus: false,
           });
+          cargarOpiniones(sitios[i]['url']);
         });
       }
     }
@@ -131,5 +118,81 @@ async function initMap() {
     })
 
   }
+
+
+  async function cargarOpiniones(urlSitio){
+/*
+    let opiniones = await fetch('http://localhost:8080/api/.....',{
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'accept': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+
+      let opiniones = res.opiniones;
+      let cadenaHtml = '';
+      //Recorremos todas las opiniones obtenidas
+      for(let i=0; i<opiniones?.length-1 || 0;i++){
+        let coment = opiniones[i][comentario];
+        //Obtener el json que representa a la lista de opiniones de la url que se pasa como parametro
+        if (coment !== undefined) cadenaHtml+='<figure class="snip1157"> <blockquote> ' + coment + '<div class="arrow"></div> </blockquote>'
+        else cadenaHtml+= '<figure class="snip1157">';
+        cadenaHtml+='<div class="author"> <h5>'+ opiniones[i][usuario] + '<span>' + LIttleSnippets.net + '</span></h5></div></figure>';
+      }
+    } )
+*/
+    //En vez de url deberia ser el nombre del aparcamiento
+    let formulario = '<h2>'+ urlSitio +'</h2>' +
+    '<div id="formCrearOpinion" class"crearOpinion">' +
+    '<label for="comentario">Comentario:</label>' + '<input id="comentario" type="textarea" cols=30 rows=5>  <br>  '+
+    'Calificar: '+
+    '<p class="clasificacion" style="padding-right: 300px;"> '+
+    
+    '<input id="radio1" type="radio" name="estrellas" value="5">'+
+    '<label for="radio1">★</label>'+
+    '<input id="radio2" type="radio" name="estrellas" value="4">'+
+    '<label for="radio2">★</label>'+
+    '<input id="radio3" type="radio" name="estrellas" value="3">'+
+    '<label for="radio3">★</label>'+
+    '<input id="radio4" type="radio" name="estrellas" value="2">'+
+    '<label for="radio4">★</label>'+
+    '<input id="radio5" type="radio" name="estrellas" value="1">'+
+    '<label for="radio5">★</label>'+
+  '</p>'+ '<button>'+
+  '<div class="svg-wrapper-1">'+
+    '<div class="svg-wrapper">'+
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">'+
+        '<path fill="none" d="M0 0h24v24H0z"></path>'+
+        '<path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>'+
+      '</svg>'+
+    '</div>'+
+  '</div>'+
+  '<span>Send</span>'+
+'</button>' + '</div>';
+
+
+    let coment = "BLabababskjabsbaguisb agdhuiahgiudha iah duihahdiuahdh agduihaudhiu auidhgahedui aighduiagheudg iaghdh iuega idgsg iag dsg";
+    let cadenaHtml ='<figure class="snip1157"> <blockquote> ' + coment + '<div class="arrow"></div> </blockquote>'
+    cadenaHtml+='<div class="author"> <h5>'+ "Usuario1" + '<span>' + cargarEstrellas(2) + '</span></h5></div></figure>';
+    cadenaHtml +='<figure class="snip1157"> <blockquote> ' + '<div class="arrow"></div> </blockquote>'
+    cadenaHtml+='<div class="author"> <h5>'+ "Usuario2" + '<span>' + cargarEstrellas(3) + '</span></h5></div></figure>'
+
+
+    document.getElementById("tablon").innerHTML = cadenaHtml;
+    document.getElementById("formOpinion").innerHTML = formulario;
+  }
+
+function cargarEstrellas(calificacion){
+  let cadenaEstrellas = "";
+  for(let i=0; i<calificacion; i++){
+    cadenaEstrellas+='<label style="color: orange;">★</label>';
+  }
+  return cadenaEstrellas;
+}
+
+
   window.valorar = valorar;
   window.initMap = initMap;
