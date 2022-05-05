@@ -19,9 +19,11 @@ class UsersController {
     }
 
     static async login(username, password) {
+        
         var aux = await UsersRepository.login(username, password);
         if(aux === undefined) return undefined;
         currentUser = new User(aux.username, aux.passwd, aux.mail);
+
         currentUser.id = aux.id;
         return currentUser;
     }

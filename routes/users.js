@@ -49,6 +49,7 @@ router.get('/singin/:status', (req, res) => {
 router.post('/singin', async (req, res) => {
     let mail = req.body.mail
     let contrasena = req.body.contrasena
+    
 
     var user = await UsersController.login(mail, contrasena);
     

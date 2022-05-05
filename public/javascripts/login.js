@@ -14,6 +14,10 @@ function login(e) {
     let mail = $('#login-mail').val()
     let pass = $('#login-pass').val()
 
+    window.localStorage.removeItem("mail")
+	window.localStorage.setItem("mail",document.getElementById("login-mail").value)
+	console.log(window.localStorage.getItem("mail"))
+
     fetch('/users/singin', {
         method:'post',                    
         redirect : 'follow',

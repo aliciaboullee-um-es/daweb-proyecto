@@ -93,10 +93,11 @@ public class OpinionesControladorRest {
 
 	@POST
 	@Path("/{url:.*\\..*}")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	public Response addValoracionToUrl(@PathParam("url") String url, Valoracion valoracion) throws Exception {
 
 		servicio.addValoracionToUrl(url, valoracion);
+		
 
 		return Response.status(Response.Status.NO_CONTENT).build();
 	}

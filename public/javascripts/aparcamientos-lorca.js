@@ -1,3 +1,4 @@
+
 function getSitiosInteres(){
 
   fetch('http://localhost:8080/api/ciudades/2befa17a-27e9-4a6c-81d4-64ba990049fb/aparcamientos',{
@@ -99,21 +100,38 @@ async function initMap() {
 
   }
 
-  function valorar(valoracion){
-
+  function valorar(urlSitio){
+    console.log(window.localStorage.getItem("mail"))
     
     swal({
-      title: '¿Desea emitir una valoración de '+valoracion+'?',
+      title: '¿Desea emitir una valoración de '+$('input:radio[name=estrellas]:checked').val()+'?',
       icon: 'warning',
       buttons: true,
       buttons: ['Cancelar','Confirmar'],
     }).then((willDelete) => {
+      const timeElapsed = Date.now();
+const today = new Date(timeElapsed);
       if (willDelete) {
         swal(
           "Operación exitosa", "Se ha valorado el aparcamiento.", "success"
         )
-
+        let urlSitioOk= urlSitio.replace("http://localhost:8080/","ciudades.com/")
+        let url = 'http://localhost:9999/api/opiniones/'+urlSitioOk
         //TODO: Aquí hay que llamar a la api para emitir la valoración
+        fetch(url,{
+        method: 'post',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type':'application/json',
+        }, //serialize JSON body
+        body: JSON.stringify({
+          'calificacion': $('input:radio[name=estrellas]:checked').val(),
+          'comentario': document.getElementById("comentario").value,
+          "email":window.localStorage.getItem("mail")
+          ,
+          'fechaValoracion': today.toISOString()
+        })
+      })
       } 
     })
 
@@ -121,8 +139,9 @@ async function initMap() {
 
 
   async function cargarOpiniones(urlSitio){
-/*
-    let opiniones = await fetch('http://localhost:8080/api/.....',{
+    /*
+    urlSitio = urlSitio.replace("http://localhost:8080/","ciudades.com/")
+    await fetch('http://localhost:9999/api/opiniones/'+urlSitio,{
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -162,7 +181,7 @@ async function initMap() {
     '<label for="radio4">★</label>'+
     '<input id="radio5" type="radio" name="estrellas" value="1">'+
     '<label for="radio5">★</label>'+
-  '</p>'+ '<button>'+
+  '</p>'+ `<button onclick="valorar('${urlSitio}');">`+
   '<div class="svg-wrapper-1">'+
     '<div class="svg-wrapper">'+
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">'+
