@@ -63,7 +63,7 @@ async function initMap() {
         const contentString ='<div id="content">' +
         '<div id="siteNotice">' +
         "</div>" +
-        '<h1 id="firstHeading" class="firstHeading">' + sitios[i]['resumen']['direccion'] +'</h1>' +
+        '<h1  style="font-size: 1.5em;" id="firstHeading" class="firstHeading">' + sitios[i]['resumen']['direccion'] +'</h1>' +
         '<div id="bodyContent">' + "<br>" + 
         '<p>Attribution: Lorca ' +
         
@@ -145,11 +145,12 @@ async function initMap() {
     } )
 */
     //En vez de url deberia ser el nombre del aparcamiento
-    let formulario = '<h2>'+ urlSitio +'</h2>' +
+    let formulario = '<h2 style="font-size: 1.7em;">'+ urlSitio +'</h2>' +
+    '<br> <br>'+
     '<div id="formCrearOpinion" class"crearOpinion">' +
-    '<label for="comentario">Comentario:</label>' + '<input id="comentario" type="textarea" cols=30 rows=5>  <br>  '+
-    'Calificar: '+
-    '<p class="clasificacion" style="padding-right: 300px;"> '+
+    '<label for="comentario">Comentario:</label>' + '<textarea id="comentario" placeholder="Introduzca un comentario sobre este aparcamiento" type="textarea" maxlength="300"></textarea>  <br>  '+
+    '<label for="clasificacion">Calificar:</label>' +  
+    '<p id="clasificacion" class="clasificacion" style="padding-right: 438px;"> '+
     
     '<input id="radio1" type="radio" name="estrellas" value="5">'+
     '<label for="radio1">★</label>'+
@@ -170,15 +171,15 @@ async function initMap() {
       '</svg>'+
     '</div>'+
   '</div>'+
-  '<span>Send</span>'+
+  '<span>Enviar</span>'+
 '</button>' + '</div>';
 
 
     let coment = "BLabababskjabsbaguisb agdhuiahgiudha iah duihahdiuahdh agduihaudhiu auidhgahedui aighduiagheudg iaghdh iuega idgsg iag dsg";
     let cadenaHtml ='<figure class="snip1157"> <blockquote> ' + coment + '<div class="arrow"></div> </blockquote>'
-    cadenaHtml+='<div class="author"> <h5>'+ "Usuario1" + '<span>' + cargarEstrellas(2) + '</span></h5></div></figure>';
+    cadenaHtml+='<div class="author"> <h5>'+ "Usuario1" + '<span> ' + cargarEstrellas(2) + '</span></h5></div></figure>';
     cadenaHtml +='<figure class="snip1157"> <blockquote> ' + '<div class="arrow"></div> </blockquote>'
-    cadenaHtml+='<div class="author"> <h5>'+ "Usuario2" + '<span>' + cargarEstrellas(3) + '</span></h5></div></figure>'
+    cadenaHtml+='<div class="author"> <h5>'+ "Usuario2" + '<span> ' + cargarEstrellas(3) + ' </span></h5></div></figure>'
 
 
     document.getElementById("tablon").innerHTML = cadenaHtml;
