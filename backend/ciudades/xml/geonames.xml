@@ -1,0 +1,61 @@
+<!-- http://api.geonames.org/wikipediaSearch?q=lorca&maxRows=20&lang=es&username=abgn -->
+<geonames>
+	<entry>
+		<lang>es</lang>
+		<title>Lorca</title>
+		<summary>Lorca es una ciudad y municipio español perteneciente a la
+			Región de Murcia, situada en la comarca del Alto Guadalentín en el
+			sureste de la península ibérica. Es la tercera población en
+			importancia de la Región de Murcia tras Murcia y Cartagena, con 92
+			299
+			habitantes (INE 2017); de ellos, 59 397 (...)
+		</summary>
+		<feature>city</feature>
+		<countryCode>ES</countryCode>
+		<elevation>329</elevation>
+		<lat>37.6798</lat>
+		<lng>-1.6944</lng>
+		<wikipediaUrl>https://es.wikipedia.org/wiki/Lorca</wikipediaUrl>
+		<thumbnailImg>http://www.geonames.org/img/wikipedia/115000/thumb-114059-100.jpg
+		</thumbnailImg>
+		<rank>100</rank>
+	</entry>
+	<entry>
+		<lang>es</lang>
+		<title>Málaga</title>
+		<summary>Málaga es una ciudad y un municipio de España, capital de la
+			provincia homónima y ubicada en la comunidad autónoma de Andalucía.
+			Con una población de 570 006 habitantes en 2017, Málaga es la más
+			poblada de España, la segunda de Andalucía y la número cuarenta y
+			seis de la Unión Europea, así como la (...)
+		</summary>
+		<feature />
+		<countryCode>ES</countryCode>
+		<elevation>22</elevation>
+		<lat>36.721</lat>
+		<lng>-4.4151</lng>
+		<wikipediaUrl>https://es.wikipedia.org/wiki/M%C3%A1laga</wikipediaUrl>
+		<thumbnailImg>https://www.geonames.org/img/wikipedia/94000/thumb-93569-100.jpg
+		</thumbnailImg>
+		<rank>100</rank>
+	</entry>
+	<entry>
+		<lang>es</lang>
+		<title>Santa Cruz de Tenerife</title>
+		<summary>Santa Cruz de Tenerife, localmente conocida como Santa Cruz,
+			es una ciudad y un municipio perteneciente a la provincia de Santa
+			Cruz de Tenerife, en la isla de Tenerife (Canarias, España). Es la
+			capital de la Comunidad Autónoma de Canarias (conjuntamente con Las
+			Palmas de Gran Canaria), y además es (...)</summary>
+		<feature>city</feature>
+		<countryCode>ES</countryCode>
+		<elevation>33</elevation>
+		<lat>28.4644</lat>
+		<lng>-16.2564</lng>
+		<wikipediaUrl>https://es.wikipedia.org/wiki/Santa_Cruz_de_Tenerife
+		</wikipediaUrl>
+		<thumbnailImg>https://www.geonames.org/img/wikipedia/119000/thumb-118864-100.jpg
+		</thumbnailImg>
+		<rank>100</rank>
+	</entry>
+</geonames>

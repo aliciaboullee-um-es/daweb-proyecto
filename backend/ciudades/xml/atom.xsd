@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+
+	xmlns:tns="http://www.w3.org/2005/Atom" elementFormDefault="qualified"
+	targetNamespace="http://www.w3.org/2005/Atom"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+	<import namespace="http://www.w3.org/XML/1998/namespace"
+		schemaLocation="xml.xsd" />
+
+	<complexType name="author">
+		<sequence>
+			<element name="name" type="string" />
+		</sequence>
+
+	</complexType>
+
+	<complexType name="link">
+		<sequence>
+
+		</sequence>
+		<attribute name="rel" use="required" />
+		<attribute name="href" use="required" />
+		
+
+	</complexType>
+
+	<complexType name="entry">
+		<sequence>
+			<element name="title" type="string" />
+			<element name="link" type="tns:link" />
+			<element name="id" type="string" />
+			<element name="updated" type="string" />
+			
+		</sequence>
+	</complexType>
+
+	<element name="feed">
+
+		<complexType>
+			<sequence>
+				
+				<element name="title" type="string" />
+				<element name="link" type="tns:link" />
+				<element name="updated" type="string" />
+				<element name="author" type="tns:author" />
+				<element name="id" type="string" />
+				
+				<element name="entry" type="tns:entry" minOccurs="0"
+					maxOccurs="unbounded" />
+				
+
+			</sequence>
+
+		</complexType>
+	</element>
+</schema>
+

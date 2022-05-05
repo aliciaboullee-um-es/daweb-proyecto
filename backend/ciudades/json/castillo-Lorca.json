@@ -1,0 +1,287 @@
+{
+	"http://dbpedia.org/resource/Castle_of_Lorca": {
+		"http://www.w3.org/2002/07/owl#sameAs": [
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Castillo_de_Lorca"
+			}
+		]
+	},
+	"http://es.wikipedia.org/wiki/Castillo_de_Lorca": {
+		"http://xmlns.com/foaf/0.1/primaryTopic": [
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Castillo_de_Lorca"
+			}
+		]
+	},
+	"http://es.dbpedia.org/resource/Castillo_de_Lorca": {
+		"http://www.w3.org/2000/01/rdf-schema#label": [
+			{
+				"type": "literal",
+				"value": "Castillo de Lorca",
+				"lang": "es"
+			}
+		],
+		"http://www.w3.org/2000/01/rdf-schema#comment": [
+			{
+				"type": "literal",
+				"value": "El Castillo de Lorca (Murcia, Espa\u00F1a) es una fortaleza de origen medieval construida entre los siglos IX y XV. Comprende una serie de estructuras defensivas que, durante la Edad Media, convirtieron a la ciudad y a su fortaleza en un punto inexpugnable del sureste peninsular. El castillo de Lorca fue un basti\u00F3n clave en las contiendas entre cristianos y musulmanes en la frontera de Granada. Se encuentra catalogado como Bien de Inter\u00E9s Cultural\u200B y dentro de la delimitaci\u00F3n del conjunto hist\u00F3rico-art\u00EDstico de Lorca.\u200B\u200B",
+				"lang": "es"
+			}
+		],
+		"http://www.w3.org/2002/07/owl#sameAs": [
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Castillo_de_Lorca"
+			},
+			{
+				"type": "uri",
+				"value": "http://rdf.freebase.com/ns/m.0gtxtq2"
+			}
+		],
+		"http://purl.org/dc/terms/subject": [
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Castillos_de_Espa\u00F1a_del_siglo_IX"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Bienes_de_inter\u00E9s_cultural_de_Lorca"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Paradores_de_Turismo"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Fortificaciones_de_al-\u00C1ndalus"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Hoteles_de_la_Regi\u00F3n_de_Murcia"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Castillos_de_la_Regi\u00F3n_de_Murcia"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Arquitectura_g\u00F3tica_de_la_Regi\u00F3n_de_Murcia"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Museos_de_Lorca"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Monumentos_hist\u00F3rico-art\u00EDsticos_de_Espa\u00F1a_declarados_en_1931"
+			},
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Categor\u00EDa:Historia_de_Lorca"
+			}
+		],
+		"http://xmlns.com/foaf/0.1/isPrimaryTopicOf": [
+			{
+				"type": "uri",
+				"value": "http://es.wikipedia.org/wiki/Castillo_de_Lorca"
+			}
+		],
+		"http://dbpedia.org/ontology/wikiPageID": [
+			{
+				"type": "literal",
+				"value": 1167645,
+				"datatype": "http://www.w3.org/2001/XMLSchema#integer"
+			}
+		],
+		"http://dbpedia.org/ontology/wikiPageRevisionID": [
+			{
+				"type": "literal",
+				"value": 129816508,
+				"datatype": "http://www.w3.org/2001/XMLSchema#integer"
+			}
+		],
+		"http://dbpedia.org/ontology/wikiPageExternalLink": [
+			{
+				"type": "uri",
+				"value": "http://www.lorcatallerdeltiempo.org/"
+			},
+			{
+				"type": "uri",
+				"value": "https://web.archive.org/web/20091005053201/http:/travesia.mcu.es/documentos/ley_phe.pdf"
+			},
+			{
+				"type": "uri",
+				"value": "http://www.laverdad.es/murcia/20090821/lorca/cultura-advirtio-2006-parador-20090821.html"
+			},
+			{
+				"type": "uri",
+				"value": "http://www.lorca.es/"
+			}
+		],
+		"http://dbpedia.org/ontology/wikiPageLength": [
+			{
+				"type": "literal",
+				"value": "18965",
+				"datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+			}
+		],
+		"http://es.dbpedia.org/property/t\u00EDtulo": [
+			{
+				"type": "literal",
+				"value": "Castillos de Espa\u00F1a",
+				"lang": "es"
+			},
+			{
+				"type": "literal",
+				"value": "Lorca y su historia",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/editorial": [
+			{
+				"type": "literal",
+				"value": "Everest",
+				"lang": "es"
+			},
+			{
+				"type": "literal",
+				"value": "R. Sala Vallejo",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/isbn": [
+			{
+				"type": "literal",
+				"value": 84,
+				"datatype": "http://www.w3.org/2001/XMLSchema#integer"
+			}
+		],
+		"http://es.dbpedia.org/property/ubicaci\u00F3n": [
+			{
+				"type": "literal",
+				"value": 20,
+				"datatype": "http://www.w3.org/2001/XMLSchema#integer"
+			}
+		],
+		"http://es.dbpedia.org/property/a\u00F1o": [
+			{
+				"type": "literal",
+				"value": 1997,
+				"datatype": "http://www.w3.org/2001/XMLSchema#integer"
+			},
+			{
+				"type": "literal",
+				"value": 1998,
+				"datatype": "http://www.w3.org/2001/XMLSchema#integer"
+			}
+		],
+		"http://es.dbpedia.org/property/inicio": [
+			{
+				"type": "literal",
+				"value": "siglo IX",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/final": [
+			{
+				"type": "literal",
+				"value": "siglo XV",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/autor": [
+			{
+				"type": "literal",
+				"value": "Sala Vallejo, Rosal\u00EDa",
+				"lang": "es"
+			},
+			{
+				"type": "literal",
+				"value": "VV.AA",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/c\u00F3digo": [
+			{
+				"type": "literal",
+				"value": "RI-53-0000044",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/figura": [
+			{
+				"type": "literal",
+				"value": "Monumento",
+				"lang": "es"
+			}
+		],
+		"http://www.w3.org/ns/prov#wasDerivedFrom": [
+			{
+				"type": "uri",
+				"value": "http://es.wikipedia.org/wiki/Castillo_de_Lorca?oldid=129816508&ns=0"
+			}
+		],
+		"http://dbpedia.org/ontology/abstract": [
+			{
+				"type": "literal",
+				"value": "El Castillo de Lorca (Murcia, Espa\u00F1a) es una fortaleza de origen medieval construida entre los siglos IX y XV. Comprende una serie de estructuras defensivas que, durante la Edad Media, convirtieron a la ciudad y a su fortaleza en un punto inexpugnable del sureste peninsular. El castillo de Lorca fue un basti\u00F3n clave en las contiendas entre cristianos y musulmanes en la frontera de Granada. Se encuentra catalogado como Bien de Inter\u00E9s Cultural\u200B y dentro de la delimitaci\u00F3n del conjunto hist\u00F3rico-art\u00EDstico de Lorca.\u200B\u200B Por su extensi\u00F3n, 640 metros de largo por unos 120 metros en su punto m\u00E1s ancho, es uno de los castillos m\u00E1s grandes de Espa\u00F1a.",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/nombre": [
+			{
+				"type": "literal",
+				"value": "Castillo de Lorca",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/imagen": [
+			{
+				"type": "literal",
+				"value": "Castillo_de_Lorca1.jpg",
+				"lang": "es"
+			}
+		],
+		"http://es.dbpedia.org/property/declaraci\u00F3n": [
+			{
+				"type": "literal",
+				"value": "1964-03-05",
+				"datatype": "http://www.w3.org/2001/XMLSchema#date"
+			}
+		]
+	},
+	"http://es.dbpedia.org/resource/Castillo_de_lorca": {
+		"http://dbpedia.org/ontology/wikiPageRedirects": [
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Castillo_de_Lorca"
+			}
+		]
+	},
+	"http://es.dbpedia.org/resource/Fortaleza_del_Sol": {
+		"http://dbpedia.org/ontology/wikiPageRedirects": [
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Castillo_de_Lorca"
+			}
+		]
+	},
+	"http://es.dbpedia.org/resource/Juder\u00EDa_de_Lorca": {
+		"http://dbpedia.org/ontology/wikiPageRedirects": [
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Castillo_de_Lorca"
+			}
+		]
+	},
+	"http://es.dbpedia.org/resource/Parador_de_Lorca": {
+		"http://dbpedia.org/ontology/wikiPageRedirects": [
+			{
+				"type": "uri",
+				"value": "http://es.dbpedia.org/resource/Castillo_de_Lorca"
+			}
+		]
+	}
+}
