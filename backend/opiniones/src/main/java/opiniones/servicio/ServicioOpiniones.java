@@ -16,7 +16,6 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
-import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 import javax.json.bind.Jsonb;
@@ -52,7 +51,6 @@ public class ServicioOpiniones implements IServicioOpiniones {
 		if (opinion.getUrl() == null || opinion.getUrl().isEmpty())
 			throw new IllegalArgumentException("url: no debe ser nulo ni vacio");
 
-
 		String id = repositorio.add(opinion);
 
 		return id;
@@ -85,11 +83,8 @@ public class ServicioOpiniones implements IServicioOpiniones {
 			Channel channel = connection.createChannel();
 
 			/** Declaración del Exchange **/
-			
-			
-			
 
-			final String exchangeName ="arso-exchange";
+			final String exchangeName = "arso-exchange";
 			boolean durable = true;
 			channel.exchangeDeclare(exchangeName, "direct", durable);
 
@@ -102,11 +97,11 @@ public class ServicioOpiniones implements IServicioOpiniones {
 			String mensaje = cadenaJSON;
 
 			String routingKey = "arso-guias";
-			
-			if(evento.getUrl().contains("aparcamientos")) {
+
+			if (evento.getUrl().contains("aparcamientos")) {
 				routingKey = "arso-aparcamientos";
 			}
-			
+
 			channel.basicPublish(exchangeName, routingKey,
 					new AMQP.BasicProperties.Builder().contentType("application/json").build(), mensaje.getBytes());
 
@@ -120,24 +115,21 @@ public class ServicioOpiniones implements IServicioOpiniones {
 
 	@Override
 	public void addValoracionToUrl(String url, Valoracion valoracion) throws RepositorioException, EntidadNoEncontrada {
-		
+
 		Opinion opinion = null;
-		
+
 		try {
 
-		opinion = getByUrl(url);
-		
-		}catch(Exception e) {
-			System.out.println("Entro excepcion");
+			opinion = getByUrl(url);
+
+		} catch (Exception e) {
 			Opinion op = new Opinion();
 			op.setUrl(url);
 			create(op);
 			opinion = op;
 		}
-		
-		
+
 		if (opinion == null) {
-			System.out.println("Entro null");
 			Opinion op = new Opinion();
 			op.setUrl(url);
 			op.setValoraciones(new LinkedList<>());
@@ -146,7 +138,6 @@ public class ServicioOpiniones implements IServicioOpiniones {
 		}
 
 		boolean existe = false;
-		System.out.println("Llegho");
 
 		// Comprobar si un usuario registra una segunda valoración para una misma URL
 		for (Valoracion val : opinion.getValoraciones()) {
