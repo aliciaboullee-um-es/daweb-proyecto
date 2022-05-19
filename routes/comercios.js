@@ -11,7 +11,7 @@ router.get('/comercios/add', (req, res) => {
     else res.redirect('users/singin');
 });
 
-router.post('/comercios/add', (req, res) => {
+router.post('/comercios/add',  async (req, res) => {
 
     let nombre = req.body.nombre
     let descripcion = req.body.descripcion
