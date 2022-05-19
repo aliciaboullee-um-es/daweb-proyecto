@@ -12,6 +12,12 @@ class ComerciosController {
         const comercio = await ComerciosRepository.get(id);
         return comercio;
     }
+
+    static async getAllComercios() {
+
+        var comercios = await ComerciosRepository.getAllComercios();
+        return comercios;
+    }
 }
 
 module.exports = ComerciosController;

@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>CityWeb</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,
+			user-scalable=no" />
+		<link rel="stylesheet" href="/src/assets/css/main.css" />
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+	</head>
+	<body class="is-preload homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+			<div id="header-wrapper">
+				<header id="header" class="container">
+
+					<!-- Logo -->
+					<div id="logo">
+						<h1><a href="/">CityWeb</a></h1>
+						<span>Tu ciudad en tu mano</span>
+					</div>
+
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="/">Inicio</a></li>
+
+							<li><a href="#">Aparcamientos</a></li>
+							<li><a href="sitiosinteres">Sitios de interés</a></li>
+							<li class="current">
+								<a href="#">Comercios</a>
+								<ul>
+									<li><a href="#">Gestionar comercios</a></li>
+									<li><a href="#">Consultar comercios</a></li>
+								</ul>
+							</li>
+
+							<li>
+								<a href="#">Perfil</a>
+								<ul>
+									<li><a href="/users/logout">Cerrar sesión</a></li>
+
+								</ul>
+							</li>
+						</ul>
+					</nav>
+
+				</header>
+			</div>
+
+			<!-- Banner -->
+			<div id="banner-wrapper">
+				<div id="banner" class="box container">
+					<div class="row">
+						<div class="col-7 col-12-medium">
+							<h2> Comercios</p>
+							<h3>Consulte los comercios dispopnibles</p>
+						</div>
+						<div class="col-5 col-12-medium">
+							<ul>
+								<img src="/images/tienda.png" width="150" height="150" alt="logo de
+									CityWeb" style="margin-left: 35%;" />
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<br> <br>
+			<!-- Features -->
+			<div id="banner-wrapper">
+				<div id="banner" class="box container">
+					<div class="row">
+						<div class="col-7 col-12-medium">
+
+							<!-- Box -->
+							<section class="box feature" style="width:100%">
+
+
+								<form id="formulario-buscador" action="/comercios/list" method="POST"
+									class="border search-form" novalidate>
+									<div class="form-group row mx-auto p-2">
+										<input id="texto-buscador" type="text" name="nombre"
+											class="form-control" placeholder="Nombre"
+											maxlength="40">
+									</div>
+									<div class="row">
+										<div class="form-group mx-auto">
+											<button id="boton-buscador" type="submit" class="btn btn-primary">Buscar
+												<i
+													class="fa fa-search pl-2"></i></button>
+										</div>
+									</div>
+								</form>
+
+
+							</section>
+
+							<div id="contenedor-productos" class="container p-5 marco-productos
+								contenedor-scroll">
+
+								{{#each comercios}}
+
+
+								<div class="row col-sm-11 p-3 mb-2 tarjeta-producto mx-auto">
+									<div class="row col-sm-12">
+										<div class="col-sm-4 col-md-3 col-lg-2 mx-auto">
+
+										</div>
+										<div class="col-md-9">
+											<div class="row">
+												<div class="col-sm-10 col-md-8 mr-auto">
+													<h4>{{this.nombre}}</h4>
+													<p>{{this.descripcion}}</p>
+												</div>
+												<div class="col-md-4 mx-auto ml-sm-auto">
+													<form id="formulario-cambio-{{this.id}}" action="/comercios/change"
+														method="GET">
+														<button id="boton-cambiar" class="btn btn-success btn-block m-1
+															desabilitable"><i
+																class="fa fa-recycle"></i> Editar</button>
+													</form>
+													<form id="formulario-delete-{{this.id}}" action="/comercios/delete"
+														method="POST">
+														<button id="boton-delete" class="btn btn-success btn-block m-1
+															desabilitable alerta-delete"><i
+																class="fa fa-dollar-sign"></i> Eliminar</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row col-sm-12 mx-auto">
+										<div class="col-sm-8 mr-auto">
+											<div class="row">
+												<div class="mx-auto p-2">
+													<p>Tipo: {{this.tipo}}</p>
+												</div>
+												<div class="mx-auto p-2">
+													<p> Latitud: {{this.lat}}</p>
+												</div>
+												<div class="mx-auto p-2">
+													<p> Longitud: {{this.long}}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<input type="hidden" name="id" value="{{this.id}}"
+									form="formulario-delete-{{this.id}}">
+								<input type="hidden" name="id" value="{{this.id}}"
+									form="formulario-cambio-{{this.id}}">
+
+								{{/each}}
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Footer -->
+			<div id="footer-wrapper">
+				<footer id="footer" class="container">
+
+					<div class="row">
+						<div class="col-12">
+							<div id="copyright">
+								<ul class="menu">
+									<li>&copy; Alejandro Buitrago - Guillermo Nuñez. Todos los derechos
+										reservados</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
+
+		</div>
+
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo6BSiPHlxWfnP_blL9MbHwBxXsoAhEMI&callback=initMap&v=weekly"
+			defer></script>
+
+		<!-- Scripts -->
+
+		<script src="/src/assets/js/jquery.min.js"></script>
+		<script src="/src/assets/js/jquery.dropotron.min.js"></script>
+		<script src="/src/assets/js/browser.min.js"></script>
+		<script src="/src/assets/js/breakpoints.min.js"></script>
+		<script src="/src/assets/js/util.js"></script>
+		<script src="/src/assets/js/main.js"></script>
+		<script src="/src/assets/js/comercios.js"></script>
+
+		<script>
+// Initialize and add the map
+async function initMap() {
+  // The location of Uluru
+  let uluru = {lat: 36.735053, lng: -4.609028};
+  // The map, centered at Uluru
+  let map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 13,
+    center: uluru,
+
+  });
+
+        //Se añade el marker
+       var marker1 = new google.maps.Marker({
+          position: {lat: 36.735053, lng: -4.609028}, 
+          map: map,
+		  draggable: true
+        });
+
+  google.maps.event.addListener(marker1, 'dragend', function() {
+
+	$("#lat-comercio").val(marker1.getPosition().lat())
+	$("#long-comercio").val(marker1.getPosition().lng())
+	  
+  //alert('Latitud = '+marker1.getPosition().lat()+ ', Longitud = '+marker1.getPosition().lng());
+});
+}
+
+  window.initMap = initMap;
+</script>
+	</body>
+</html>

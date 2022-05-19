@@ -73,6 +73,17 @@ class ComerciosRepository {
     }
   }
 
+  static async getAllComercios() {
+    try {
+      let p = await pool
+        .promise()
+        .query("SELECT * FROM comercios");
+      return p[0][0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async add(comercio) {
     try {
       await pool

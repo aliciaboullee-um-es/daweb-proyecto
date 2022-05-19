@@ -23,9 +23,10 @@ router.get('/aparcamientos', (req, res) => {
     else res.redirect('users/singin');
 });
 
-router.get('/comercios/add', (req, res) => {
+
+router.get('/comercios', (req, res) => {
     if(userController.getCurrentUser() != undefined){
-        res.render('comercios/gestion-comercio', {title : 'Comercios'});
+        res.render('comercios/consulta-comercio', {title : 'Comercios'});
     }
     else res.redirect('users/singin');
 });

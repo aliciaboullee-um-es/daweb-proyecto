@@ -24,4 +24,15 @@ router.post('/comercios/add',  async (req, res) => {
     res.json({ type: 'ok', alerta: { tipo: 'alert-danger', msg: 'Registro correcto' } });
 });
 
+router.get('/list', async (req, res) => {
+    const comercios = await comerciosController.getAllComercios();
+
+    res.render('comercios/consulta-comercio', {
+        comercios,
+        listname: 'Comercios'
+    });
+
+});
+
+
 module.exports = router;
