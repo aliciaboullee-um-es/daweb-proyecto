@@ -5,12 +5,12 @@ var currentUser = undefined;
 
 class UsersController {
 
-    static async create(username, passwd,email) {
+    static async create(username, passwd,email,admin) {
         var res = await UsersRepository.get(email);
         if(res !== undefined) 
             return false
         
-        var u = new User(username, passwd,email);
+        var u = new User(username, passwd,email,admin);
         console.log(username)
         console.log(passwd)
         console.log(email)
@@ -22,7 +22,7 @@ class UsersController {
         
         var aux = await UsersRepository.login(username, password);
         if(aux === undefined) return undefined;
-        currentUser = new User(aux.username, aux.passwd, aux.mail);
+        currentUser = new User(aux.username, aux.passwd, aux.mail, aux.admin);
 
         currentUser.id = aux.id;
         return currentUser;
@@ -32,10 +32,11 @@ class UsersController {
         return currentUser;
     }
 
-    static async updateProfile(username, passwd,email){
+    static async updateProfile(username, passwd,email,admin){
         currentUser.username = username;
         currentUser.passwd = passwd;
         currentUser.mail = email;
+        currentUser.admin = admin
 
         await UsersRepository.update(currentUser);
         return currentUser;

@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mapsRouter = require('./routes/maps');
 var aparcamientosRouter = require('./routes/aparcamientos');
+var comerciosRouter = require('./routes/comercios');
 //var loginRouter = require('./routes/login')
 
 // inicializaciones
@@ -42,6 +43,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/maps', mapsRouter);
 app.use('/aparcamientos', aparcamientosRouter);
+app.use('/comercios', comerciosRouter);
 
 //app.use('/login', loginRouter);
 

@@ -23,4 +23,11 @@ router.get('/aparcamientos', (req, res) => {
     else res.redirect('users/singin');
 });
 
+router.get('/comercios/add', (req, res) => {
+    if(userController.getCurrentUser() != undefined){
+        res.render('comercios/gestion-comercio', {title : 'Comercios'});
+    }
+    else res.redirect('users/singin');
+});
+
 module.exports = router;

@@ -14,9 +14,10 @@ router.post('/singup', async (req, res) => {
     let name = req.body.name
   let mail = req.body.mail
   let contrasena = req.body.contrasena
+  let admin = req.body.admin
   console.log(name);
 
-        const ok = await UsersController.create(name, contrasena,mail);
+        const ok = await UsersController.create(name, contrasena,mail,admin);
         if (!ok) {
             res.json({ type: 'no-disponible', alerta: { tipo: 'alert-danger', msg: 'Nombre de usuario no disponible' } });
             return;
@@ -67,8 +68,8 @@ router.post('/singin', async (req, res) => {
 
 
 router.post('/profile', async (req, res) => {
-    const { username, passwd,email } = req.body;
-    await UsersController.updateProfile(username, passwd,email)
+    const { username, passwd,email,admin } = req.body;
+    await UsersController.updateProfile(username, passwd,email,admin)
     res.json({alerta: { tipo: 'alert-success', msg: 'Perfil editado correctamente'}});
 });
 

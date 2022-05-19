@@ -38,14 +38,17 @@ function sendContact(e) {
     let name = $('#user-name').val()
     let mail = $('#user-mail').val()
     let pass = $('#user-contrasena').val()
+    
+    let admin = document.querySelector('#user-admin').checked;
 
+    console.log(admin)
     console.log(name)
 
     fetch('/users/singup', {
         method:'post',                    
         redirect : 'follow',
         headers : new Headers({'Content-Type':'application/json'}),
-        body: JSON.stringify({'name': name, 'mail':mail, 'contrasena':pass })})
+        body: JSON.stringify({'name': name, 'mail':mail, 'contrasena':pass, 'admin':admin })})
         .then(resultado => {return resultado.json()})
         .then(fjson => {
             if(fjson['type'] == 'ok')
