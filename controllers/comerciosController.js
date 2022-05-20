@@ -19,6 +19,12 @@ class ComerciosController {
         var comercios = await ComerciosRepository.getAllComercios();
         return comercios;
     }
+
+    static async deleteComercio(nombre) {
+
+        await ComerciosRepository.deleteComercio(nombre);
+        
+    }
 }
 
 module.exports = ComerciosController;

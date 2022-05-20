@@ -79,6 +79,17 @@ class ComerciosRepository {
     }
   }
 
+  static async deleteComercio(nombre) {
+    try {
+      await pool.promise()
+        .query("DELETE FROM comercios c WHERE c.nombre = ?", nombre);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  
+
   static async getAllComercios() {
     try {
       let p = await pool

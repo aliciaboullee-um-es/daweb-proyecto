@@ -26,6 +26,12 @@ router.post('/check',  async (req, res) => {
     }
 });
 
+router.post('/delete',  async (req, res) => {
+    let comercio = req.body.comercio
+    await comerciosController.deleteComercio(comercio)
+    res.json({ type: 'ok', alerta: { tipo: 'alert-danger', msg: 'Eliminado correctamente' } });
+});
+
 router.get('/error',  async (req, res) => {
     res.render('comercios/error', {title : 'Comercios'});
 });
