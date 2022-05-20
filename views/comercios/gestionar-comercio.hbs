@@ -6,28 +6,14 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1,
 			user-scalable=no" />
-		<link rel="stylesheet" href="/src/assets/css/main.css" />
+		<link rel="stylesheet"
+			href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" />
+		<link rel="stylesheet" href="/src/assets/css/main-table.css" />
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 		<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-		<!--   Core JS Files   -->
-<script src="/src/assets/js/jquery.3.2.1.min.js"></script>
-<script src="/src/assets/js/popper.min.js"></script>
-<script src="/src/assets/js/bootstrap.min.js"></script>
-
-<!-- jQuery UI -->
-<script src="/src/assets/js/jquery-ui.min.js"></script>
-<script src="/src/assets/js/jquery.ui.touch-punch.min.js"></script>
-
-<!-- jQuery Scrollbar -->
-<script src="/src/assets/js/jquery.scrollbar.min.js"></script>
-
-<!-- Datatables -->
-<script src="/src/assets/js/datatables.min.js"></script>
-<script src="/src/assets/js/dataTables.responsive.min.js"></script>
-<script src="/src/assets/js/datatables.defaults.js"></script>	
 	</head>
 	<body class="is-preload homepage">
 		<div id="page-wrapper">
@@ -95,33 +81,12 @@
 					<div class="row">
 						<div class="col-7 col-12-medium">
 
-							<!-- Box -->
-							<section class="box feature" style="width:100%">
 
-
-								<form id="formulario-buscador" action="/comercios/list" method="POST"
-									class="border search-form" novalidate>
-									<div class="form-group row mx-auto p-2">
-										<input id="texto-buscador" type="text" name="nombre"
-											class="form-control" placeholder="Nombre"
-											maxlength="40">
-									</div>
-									<div class="row">
-										<div class="form-group mx-auto">
-											<button id="boton-buscador" type="submit" class="btn btn-primary">Buscar
-												<i
-													class="fa fa-search pl-2"></i></button>
-										</div>
-									</div>
-								</form>
-
-
-							</section>
 
 							<div id="contenedor-productos" class="container p-5 marco-productos
 								contenedor-scroll">
 
-								
+
 
 								<table name="table_id" id="table_id">
 									<thead>
@@ -131,6 +96,8 @@
 											<th>Tipo</th>
 											<th>Latitud</th>
 											<th>Longitud</th>
+											<th>Eliminar</th>
+											<th>Editar</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -141,61 +108,21 @@
 											<td>{{this.tipo}}</td>
 											<td>{{this.lat}}</td>
 											<td>{{this.lng}}</td>
+											<td><button id="btn-delete" class="delete-row btn btn-outline-danger
+													btn-sm"
+													style="background-image: none; background-color: #d33;">
+													<i class="fa fa-trash"></i>
+												</button></td>
+
+											<td><button id="btn-edit" class="delete-row btn btn-outline-danger
+													btn-sm"
+													style="background-image: none;">
+													<i class="fas fa-edit"></i>
+												</button></td>
 										</tr>
-									{{/each}}
+										{{/each}}
 									</tbody>
 								</table>
-
-
-								<div class="row col-sm-11 p-3 mb-2 tarjeta-producto mx-auto">
-									<div class="row col-sm-12">
-										<div class="col-sm-4 col-md-3 col-lg-2 mx-auto">
-
-										</div>
-										<div class="col-md-9">
-											<div class="row">
-												<div class="col-sm-10 col-md-8 mr-auto">
-													<h4>{{this.nombre}}</h4>
-													<p>{{this.descripcion}}</p>
-												</div>
-												<div class="col-md-4 mx-auto ml-sm-auto">
-													<form id="formulario-cambio-{{this.id}}" action="/comercios/change"
-														method="GET">
-														<button id="boton-cambiar"><i
-																class="fa fa-recycle"></i> Editar</button>
-													</form>
-													<form id="formulario-delete-{{this.id}}" action="/comercios/delete"
-														method="POST">
-														<button id="boton-delete"><i
-																class="fa fa-dollar-sign"></i> Eliminar</button>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="row col-sm-12 mx-auto">
-										<div class="col-sm-8 mr-auto">
-											<div class="row">
-												<div class="mx-auto p-2">
-													<p>Tipo: {{this.tipo}}</p>
-												</div>
-												<div class="mx-auto p-2">
-													<p> Latitud: {{this.lat}}</p>
-												</div>
-												<div class="mx-auto p-2">
-													<p> Longitud: {{this.lng}}</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<input type="hidden" name="id" value="{{this.id}}"
-									form="formulario-delete-{{this.id}}">
-								<input type="hidden" name="id" value="{{this.id}}"
-									form="formulario-cambio-{{this.id}}">
-
-								
 							</div>
 
 						</div>
@@ -238,16 +165,72 @@
 		<script src="/src/assets/js/main.js"></script>
 		<script src="/src/assets/js/comercios.js"></script>
 		<script src="/src/assets/js/datatable.min.js"></script>
+		<!--   Core JS Files   -->
+		<script src="/src/assets/js/jquery.3.2.1.min.js"></script>
+		<script src="/src/assets/js/popper.min.js"></script>
+		<script src="/src/assets/js/bootstrap.min.js"></script>
 
-		
+		<!-- jQuery UI -->
+		<script src="/src/assets/js/jquery-ui.min.js"></script>
+		<script src="/src/assets/js/jquery.ui.touch-punch.min.js"></script>
+
+		<!-- jQuery Scrollbar -->
+		<script src="/src/assets/js/jquery.scrollbar.min.js"></script>
+
+		<!-- Datatables -->
+		<script src="/src/assets/js/datatables.min.js"></script>
+
+		<script src="/src/assets/js/datatables.defaults.js"></script>
+
 
 		<script>
+	$(document).ready(function () {
+    var table = $('#table_id').DataTable({
+      "order": [[1, "desc"]],
+      "columnDefs": [
+        {
+          "orderable": false, visible: true,
+          "searchable": false, "targets": -1
+        },
+		{
+          "orderable": false, visible: true,
+          "searchable": false, "targets": -2
+        }
+      ]
+    });
+	$('#table_id tbody').on('click', '#btn-delete', function (e) {
+      var data = table.row($(this).parents('tr')).data();
+      //alert( data[1] +" - "+ data[ 5 ] );
+      swal({
+        title: '¿Estás seguro?',
+        text: "El comercio está a punto de ser eliminado permanentemente y no podrá ser recuperado.",
+        icon: 'warning',
+        buttons: true,
+				buttons: ['Cancelar','Eliminar'],
+				dangerMode: true,
+      }).then((willDelete) => {
+		  if (willDelete) {
+			   fetch('/comercios/delete', {
+        method:'post',                    
+        redirect : 'follow',
+        headers : new Headers({'Content-Type':'application/json'}),
+        body: JSON.stringify({'comercio': data[0] })})
+        .then(resultado => {return resultado.json()})
+        .then(fjson => {
+            if(fjson['type'] == 'ok')
+                swal("Operación exitosa", "Se ha eliminado el comercio correctamente.", "success").then(function() {
+                  location.reload();
+                });                        
+        
+	})
 
-$(document).ready(function () {
-    $('#table_id').DataTable();
-});
-
-
+		  }
+	  })
+	});
+  	});
+                         
+	</script>
+		<script>
 // Initialize and add the map
 async function initMap() {
   // The location of Uluru
