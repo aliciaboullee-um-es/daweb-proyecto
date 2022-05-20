@@ -1,6 +1,6 @@
 function getSitiosInteres(){
 
-  fetch('http://localhost:8080/api/ciudades/1bfca02d-8828-4106-b26f-afa1636ea931/aparcamientos',{
+  fetch('http://localhost:8082/api/ciudades/3749e3b2-37d5-4856-8815-7e1a8297d755/aparcamientos',{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -23,7 +23,7 @@ async function initMap() {
       center: uluru,
     });
     
-    let sitios = await fetch('http://localhost:8080/api/ciudades/1bfca02d-8828-4106-b26f-afa1636ea931/aparcamientos',{
+    let sitios = await fetch('http://localhost:8082/api/ciudades/3749e3b2-37d5-4856-8815-7e1a8297d755/aparcamientos',{
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -35,7 +35,7 @@ async function initMap() {
       let sitios = res.aparcamientos;
       let markers = [];
     
-      for(let i=0; i<sitios?.length-1 || 0;i++){
+      for(let i=0; i<sitios?.length || 0;i++){
         if (typeof(sitios) !== 'undefined') {
 
         let links = "";

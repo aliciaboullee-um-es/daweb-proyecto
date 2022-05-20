@@ -2,7 +2,7 @@ let markers = [];
 
 function getSitiosInteres(){
 
-  fetch('http://localhost:8080/api/ciudades/1bfca02d-8828-4106-b26f-afa1636ea931/sitiosInteres',{
+  fetch('http://localhost:8082/api/ciudades/3749e3b2-37d5-4856-8815-7e1a8297d755/sitiosInteres',{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -25,7 +25,7 @@ async function initMap() {
     center: uluru,
   });
   
-  let sitios = await fetch('http://localhost:8080/api/ciudades/1bfca02d-8828-4106-b26f-afa1636ea931/sitiosInteres',{
+  let sitios = await fetch('http://localhost:8082/api/ciudades/3749e3b2-37d5-4856-8815-7e1a8297d755/sitiosInteres',{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -104,7 +104,7 @@ async function cargarAparcamientos(idSitio){
   document.getElementById("map").outerHTML = '<div id="map"> </div>';
   console.log("APARCAMIENTOS")
   let markers=[];
-  let sitio = await fetch('http://localhost:8080/api/ciudades/1bfca02d-8828-4106-b26f-afa1636ea931/sitiosInteres/'+idSitio,{
+  let sitio = await fetch('http://localhost:8082/api/ciudades/3749e3b2-37d5-4856-8815-7e1a8297d755/sitiosInteres/'+idSitio,{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -127,7 +127,7 @@ async function cargarAparcamientos(idSitio){
 
     console.log("Mapa inicializado");
 
-    let aparcamientos = await fetch('http://localhost:8080/api/ciudades/1bfca02d-8828-4106-b26f-afa1636ea931/sitiosInteres/'+sitio['id']+'/aparcamientos',{
+    let aparcamientos = await fetch('http://localhost:8082/api/ciudades/3749e3b2-37d5-4856-8815-7e1a8297d755/sitiosInteres/'+sitio['id']+'/aparcamientos',{
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -137,7 +137,7 @@ async function cargarAparcamientos(idSitio){
     .then(res => res.json())
     .then(res => {
       let aparcamientos = res.aparcamientos;
-
+      console.log(aparcamientos);
       //Se añade el marker del sitio de interes
       let markerSitio = new google.maps.Marker({
         position: uluru,
@@ -168,9 +168,9 @@ async function cargarAparcamientos(idSitio){
           shouldFocus: false,
         });
       });
-
-      for(let i=0; i<aparcamientos?.length-1 || 0;i++){
-
+      console.log("aparcalengt="+aparcamientos.length);
+      for(let i=0; i<aparcamientos?.length || 0;i++){
+        console.log("ENTRA");
         let pos = { lat: aparcamientos[i]['resumen']['latitud'], lng: aparcamientos[i]['resumen']['longitud'] };
         
 

@@ -1,7 +1,7 @@
 
 function getSitiosInteres(){
 
-  fetch('http://localhost:8080/api/ciudades/2befa17a-27e9-4a6c-81d4-64ba990049fb/aparcamientos',{
+  fetch('http://localhost:8082/api/ciudades/29839653-ef8f-44bb-af5b-6765d17b400c/aparcamientos',{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -24,7 +24,7 @@ async function initMap() {
       center: uluru,
     });
     
-    let sitios = await fetch('http://localhost:8080/api/ciudades/2befa17a-27e9-4a6c-81d4-64ba990049fb/aparcamientos',{
+    let sitios = await fetch('http://localhost:8082/api/ciudades/29839653-ef8f-44bb-af5b-6765d17b400c/aparcamientos',{
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -101,8 +101,6 @@ async function initMap() {
   }
 
   function valorar(urlSitio){
-    console.log(window.localStorage.getItem("mail"))
-    
     swal({
       title: '¿Desea emitir una valoración de '+$('input:radio[name=estrellas]:checked').val()+'?',
       icon: 'warning',
@@ -115,8 +113,7 @@ const today = new Date(timeElapsed);
         swal(
           "Operación exitosa", "Se ha valorado el aparcamiento.", "success"
         )
-        let urlSitioOk= urlSitio.replace("http://localhost:8080/","ciudades.com/")
-        let url = 'http://localhost:9999/api/opiniones/'+urlSitioOk
+        let url = 'http://localhost:8080/api/opiniones/valoraciones?url='+urlSitio
         //TODO: Aquí hay que llamar a la api para emitir la valoración
         fetch(url,{
         method: 'post',
@@ -127,7 +124,7 @@ const today = new Date(timeElapsed);
         body: JSON.stringify({
           'calificacion': $('input:radio[name=estrellas]:checked').val(),
           'comentario': document.getElementById("comentario").value,
-          "email":window.localStorage.getItem("mail")
+          "correo":window.localStorage.getItem("mail")
           ,
           'fechaValoracion': today.toISOString()
         })
@@ -139,9 +136,8 @@ const today = new Date(timeElapsed);
 
 
   async function cargarOpiniones(urlSitio){
-    /*
-    urlSitio = urlSitio.replace("http://localhost:8080/","ciudades.com/")
-    await fetch('http://localhost:9999/api/opiniones/'+urlSitio,{
+    
+    await fetch('http://localhost:8080/api/opiniones?url='+urlSitio,{
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -150,21 +146,20 @@ const today = new Date(timeElapsed);
     })
     .then(res => res.json())
     .then(res => {
-
-      let opiniones = res.opiniones;
+      let valoraciones = res['valoraciones'];
       let cadenaHtml = '';
       //Recorremos todas las opiniones obtenidas
-      for(let i=0; i<opiniones?.length-1 || 0;i++){
-        let coment = opiniones[i][comentario];
+      for(let i=0; i<valoraciones?.length || 0;i++){
+        let coment = valoraciones[i]['comentario'];
         //Obtener el json que representa a la lista de opiniones de la url que se pasa como parametro
         if (coment !== undefined) cadenaHtml+='<figure class="snip1157"> <blockquote> ' + coment + '<div class="arrow"></div> </blockquote>'
         else cadenaHtml+= '<figure class="snip1157">';
-        cadenaHtml+='<div class="author"> <h5>'+ opiniones[i][usuario] + '<span>' + LIttleSnippets.net + '</span></h5></div></figure>';
+        cadenaHtml+='<div class="author"> <h5>'+ valoraciones[i]['correo'] + '<span>'+ cargarEstrellas(valoraciones[i]['calificacion']) + '</span></h5></div></figure>';
       }
-    } )
-*/
+    
+
     //En vez de url deberia ser el nombre del aparcamiento
-    let formulario = '<h2 style="font-size: 1.7em;">'+ urlSitio +'</h2>' +
+    let formulario = '<h2 style="font-size: 1.7em;"> Valoraciones </h2>' +
     '<br> <br>'+
     '<div id="formCrearOpinion" class"crearOpinion">' +
     '<label for="comentario">Comentario:</label>' + '<textarea id="comentario" placeholder="Introduzca un comentario sobre este aparcamiento" type="textarea" maxlength="300"></textarea>  <br>  '+
@@ -194,15 +189,9 @@ const today = new Date(timeElapsed);
 '</button>' + '</div>';
 
 
-    let coment = "BLabababskjabsbaguisb agdhuiahgiudha iah duihahdiuahdh agduihaudhiu auidhgahedui aighduiagheudg iaghdh iuega idgsg iag dsg";
-    let cadenaHtml ='<figure class="snip1157"> <blockquote> ' + coment + '<div class="arrow"></div> </blockquote>'
-    cadenaHtml+='<div class="author"> <h5>'+ "Usuario1" + '<span> ' + cargarEstrellas(2) + '</span></h5></div></figure>';
-    cadenaHtml +='<figure class="snip1157"> <blockquote> ' + '<div class="arrow"></div> </blockquote>'
-    cadenaHtml+='<div class="author"> <h5>'+ "Usuario2" + '<span> ' + cargarEstrellas(3) + ' </span></h5></div></figure>'
-
-
     document.getElementById("tablon").innerHTML = cadenaHtml;
     document.getElementById("formOpinion").innerHTML = formulario;
+  } )
   }
 
 function cargarEstrellas(calificacion){

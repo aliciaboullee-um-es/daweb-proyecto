@@ -1,0 +1,6 @@
+opiniones.rest 8080
+opiniones-restRetrofit 8081
+ciudades 8082
+graphql 8083
+guias secured=50001 sino 5000
+pasarela 8090

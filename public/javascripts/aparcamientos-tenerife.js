@@ -1,6 +1,6 @@
 function getSitiosInteres(){
 
-  fetch('http://localhost:8080/api/ciudades/5d36d5c2-241a-4148-aec9-457d35c6aa94/aparcamientos',{
+  fetch('http://localhost:8082/api/ciudades/5d36d5c2-241a-4148-aec9-457d35c6aa94/aparcamientos',{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -23,7 +23,7 @@ async function initMap() {
     center: uluru,
   });
   
-  let sitios = await fetch('http://localhost:8080/api/ciudades/5d36d5c2-241a-4148-aec9-457d35c6aa94/aparcamientos',{
+  let sitios = await fetch('http://localhost:8082/api/ciudades/5d36d5c2-241a-4148-aec9-457d35c6aa94/aparcamientos',{
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin': '*',

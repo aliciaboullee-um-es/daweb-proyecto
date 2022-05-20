@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.um.es/ciudad"
+	xmlns:tns="http://www.um.es/ciudad"
+	elementFormDefault="qualified">
+
+	<complexType name="Aparcamiento">
+		<sequence>
+			<element name="id" type="string" />
+			<element name="ciudad" type="string"/>
+			<element name="direccion" type="string"/>
+			<element name="latitud" type="double" />
+			<element name="longitud" type="double" />
+			<element name="numValoraciones" type="int" />
+			<element name="calificacionMedia" type="double"/>
+			<element name="url" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="SitioInteres">
+		<sequence>
+			<element name="id" type="string" />
+			<element name="nombre" type="string"/>
+			<element name="linkExterno" type="string" maxOccurs="unbounded" minOccurs="0"/>
+			<element name="comentario" type="string"/>
+			<element name="imagen" type="string" maxOccurs="unbounded" minOccurs="0"/>
+			<element name="latitud" type="double" />
+			<element name="longitud" type="double" />
+			<element name="urlWikipedia" type="string"/>
+		</sequence>
+	</complexType>
+
+	<element name="ciudad">
+
+		<complexType>
+			<sequence>
+				<element name="id" type="string" />
+				<element name="aparcamientos" type="tns:Aparcamiento"
+					maxOccurs="unbounded" />
+				<element name="sitios" type="tns:SitioInteres"
+					maxOccurs="unbounded" />
+			</sequence>
+			<attribute name="Nombre" type="string" use="required" />
+			<attribute name="Latitud" type="double" use="optional" />
+			<attribute name="Longitud" type="double" use="optional" />
+		</complexType>
+	</element>
+</schema>
