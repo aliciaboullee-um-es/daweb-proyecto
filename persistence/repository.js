@@ -8,6 +8,12 @@ class UsersRepository {
     return res[0][0];
   }
 
+  static async isAdmin(email) {
+    var res = await pool.promise()
+      .query("SELECT admin FROM users u WHERE u.mail = ? ", [email]);
+    return res[0][0];
+  }
+
   static async getById(id){
     var res = await pool.promise()
       .query("SELECT * FROM users u WHERE u.id = ? ", [id]);
@@ -78,7 +84,7 @@ class ComerciosRepository {
       let p = await pool
         .promise()
         .query("SELECT * FROM comercios");
-      return p[0][0];
+      return p[0];
     } catch (error) {
       throw error;
     }
@@ -86,16 +92,17 @@ class ComerciosRepository {
 
   static async add(comercio) {
     try {
+
       await pool
         .promise()
         .query(
-          `INSERT INTO comercios (nombre, descripcion, tipo, lat, long) VALUES (?,?,?,?,?)`,
+          'INSERT INTO comercios (nombre, descripcion, tipo, lat, lng ) VALUES (?,?,?,?,?)',
           [
             comercio.nombre,
             comercio.descripcion,
             comercio.tipo,
-            comercio.lat,
-            comercio.long,
+            comercio.latitud,
+            comercio.longitud,
           ]
         );
     } catch (error) {

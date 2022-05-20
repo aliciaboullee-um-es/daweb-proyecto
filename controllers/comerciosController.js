@@ -3,8 +3,9 @@ const { ComerciosRepository } = require('../persistence/repository');
 
 class ComerciosController {
 
-    static async createComercio(nombre, descripcion, tipo, lat, long) {
-        var c = new Comercio(nombre, descripcion, tipo, lat, long);
+    static async createComercio(nombre, descripcion, tipo, lat, lng) {
+        console.log(lng)
+        var c = new Comercio(nombre, lat, lng,descripcion,tipo);
         await ComerciosRepository.add(c);
     }
 

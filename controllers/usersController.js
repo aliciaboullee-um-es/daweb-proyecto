@@ -18,6 +18,10 @@ class UsersController {
         return true;
     }
 
+    static async isAdmin(mail) {
+        return UsersRepository.isAdmin(mail);
+    }
+
     static async login(username, password) {
         
         var aux = await UsersRepository.login(username, password);

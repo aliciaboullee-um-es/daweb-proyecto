@@ -30,7 +30,7 @@
 							<li><a href="#">Aparcamientos</a></li>
 							<li><a href="sitiosinteres">Sitios de interés</a></li>
 							<li class="current">
-								<a  href="#">Comercios</a>
+								<a href="#">Comercios</a>
 								<ul>
 									<li><a href="#">Gestionar comercios</a></li>
 									<li><a href="#">Consultar comercios</a></li>
@@ -55,8 +55,8 @@
 				<div id="banner" class="box container">
 					<div class="row">
 						<div class="col-7 col-12-medium">
-							<h2> Comercios</p>
-							<h3>Introduzca los datos de su comercio</p>
+							<h2> Error 401</p>
+							<h3>No tiene los permisos de administrador</p>
 						</div>
 						<div class="col-5 col-12-medium">
 							<ul>
@@ -69,79 +69,7 @@
 			</div>
 
 			<br> <br>
-			<!-- Features -->
-			<div id="banner-wrapper">
-				<div id="banner" class="box container">
-					<div class="row">
-						<div class="col-7 col-12-medium">
-
-							<!-- Box -->
-							<section class="box feature" style="width:100%">
-								<form id="formulario-registrar-comercio" action="/comercios/add"
-									method="POST" enctype="multipart/form-data"
-									class="needs-validation form-perfil" novalidate>
-
-									<div class="form-group row">
-										<label style="padding-left: 0px;" for="nombre-registrar-comercio"
-											class="col-sm-4">Nombre:</label>
-										<input id="nombre-registrar-comercio" type="text" name="nombre"
-											class="form-control col-sm-8" maxlength="40" required>
-									</div>
-									<div class="form-group row">
-										<label style="padding-left: 0px;" for="descripcion-registrar-comercio"
-											class="col-sm-4">Descripcion:</label>
-										<textarea id="descripcion-registrar-comercio" name="descripcion"
-											rows="3" required class="form-control col-sm-11 ml-auto" style="padding-left: 5px;padding-top: 5px;"></textarea>
-									</div>
-									<div class="row">
-										<div class="container col-md-5">
-											<div class="form-group row">
-												<label style="padding-left: 0px;" for="tipo-registrar-comercio"
-													class="col-sm-4">Tipo:</label>
-												<input id="tipo-registrar-comercio" type="text" name="tipo"
-													class="form-control col-sm-8" maxlength="40" required>
-											</div>
-											<div class="form-group row">
-
-												<!-- display selected location information -->
-												<label style="padding-left: 0px;" for="lat-comercio"
-													class="col-sm-4">Latitud:</label>
-
-												<input id="lat-comercio" type="text" class="search_latitude"
-													size="30">
-
-												<label style="padding-left: 0px;" for="long-comercio"
-													class="col-sm-4">Longitud:</label>
-												<input id="long-comercio" type="text" class="search_longitude"
-													size="30">
-													
-											</div>
-
-										</div>
-										
-										<!-- display google map -->
-										<div class="form-group row" style="width:100%;height:400px;margin-top:30px">
-											<div style="width:100%;height=200px;overflow: initial;" id="map"></div>
-										</div>
-									</div>
-									<div class="form-group">
-										<br> <br> 
-										<button id="btn-register" type="submit" class="btn
-											btn-success btn-block">Registrar Comercio</button>
-									</div>
-								</form>
-
-
-
-							</section>
-
-
-						</div>
-
-					</div>
-				</div>
-
-			</div>
+			
 
 			<!-- Footer -->
 			<div id="footer-wrapper">

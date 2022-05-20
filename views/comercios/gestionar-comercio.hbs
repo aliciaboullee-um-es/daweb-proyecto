@@ -8,6 +8,26 @@
 			user-scalable=no" />
 		<link rel="stylesheet" href="/src/assets/css/main.css" />
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+		<!--   Core JS Files   -->
+<script src="/src/assets/js/jquery.3.2.1.min.js"></script>
+<script src="/src/assets/js/popper.min.js"></script>
+<script src="/src/assets/js/bootstrap.min.js"></script>
+
+<!-- jQuery UI -->
+<script src="/src/assets/js/jquery-ui.min.js"></script>
+<script src="/src/assets/js/jquery.ui.touch-punch.min.js"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="/src/assets/js/jquery.scrollbar.min.js"></script>
+
+<!-- Datatables -->
+<script src="/src/assets/js/datatables.min.js"></script>
+<script src="/src/assets/js/dataTables.responsive.min.js"></script>
+<script src="/src/assets/js/datatables.defaults.js"></script>	
 	</head>
 	<body class="is-preload homepage">
 		<div id="page-wrapper">
@@ -56,7 +76,7 @@
 					<div class="row">
 						<div class="col-7 col-12-medium">
 							<h2> Comercios</p>
-							<h3>Consulte los comercios dispopnibles</p>
+							<h3>Gestione sus comercios</p>
 						</div>
 						<div class="col-5 col-12-medium">
 							<ul>
@@ -101,7 +121,30 @@
 							<div id="contenedor-productos" class="container p-5 marco-productos
 								contenedor-scroll">
 
-								{{#each comercios}}
+								
+
+								<table name="table_id" id="table_id">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th>Descripcion</th>
+											<th>Tipo</th>
+											<th>Latitud</th>
+											<th>Longitud</th>
+										</tr>
+									</thead>
+									<tbody>
+										{{#each comercios}}
+										<tr>
+											<td>{{this.nombre}}</td>
+											<td>{{this.descripcion}}</td>
+											<td>{{this.tipo}}</td>
+											<td>{{this.lat}}</td>
+											<td>{{this.lng}}</td>
+										</tr>
+									{{/each}}
+									</tbody>
+								</table>
 
 
 								<div class="row col-sm-11 p-3 mb-2 tarjeta-producto mx-auto">
@@ -118,14 +161,12 @@
 												<div class="col-md-4 mx-auto ml-sm-auto">
 													<form id="formulario-cambio-{{this.id}}" action="/comercios/change"
 														method="GET">
-														<button id="boton-cambiar" class="btn btn-success btn-block m-1
-															desabilitable"><i
+														<button id="boton-cambiar"><i
 																class="fa fa-recycle"></i> Editar</button>
 													</form>
 													<form id="formulario-delete-{{this.id}}" action="/comercios/delete"
 														method="POST">
-														<button id="boton-delete" class="btn btn-success btn-block m-1
-															desabilitable alerta-delete"><i
+														<button id="boton-delete"><i
 																class="fa fa-dollar-sign"></i> Eliminar</button>
 													</form>
 												</div>
@@ -142,7 +183,7 @@
 													<p> Latitud: {{this.lat}}</p>
 												</div>
 												<div class="mx-auto p-2">
-													<p> Longitud: {{this.long}}</p>
+													<p> Longitud: {{this.lng}}</p>
 												</div>
 											</div>
 										</div>
@@ -154,7 +195,7 @@
 								<input type="hidden" name="id" value="{{this.id}}"
 									form="formulario-cambio-{{this.id}}">
 
-								{{/each}}
+								
 							</div>
 
 						</div>
@@ -196,8 +237,17 @@
 		<script src="/src/assets/js/util.js"></script>
 		<script src="/src/assets/js/main.js"></script>
 		<script src="/src/assets/js/comercios.js"></script>
+		<script src="/src/assets/js/datatable.min.js"></script>
+
+		
 
 		<script>
+
+$(document).ready(function () {
+    $('#table_id').DataTable();
+});
+
+
 // Initialize and add the map
 async function initMap() {
   // The location of Uluru

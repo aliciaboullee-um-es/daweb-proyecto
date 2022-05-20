@@ -24,7 +24,7 @@ pool.query(
     "CREATE TABLE users (id INT NOT NULL AUTO_INCREMENT, username VARCHAR(45) NOT NULL, passwd VARCHAR(45) NOT NULL, mail VARCHAR(45) NOT NULL,admin VARCHAR(7) NOT NULL, PRIMARY KEY (id));", (err, res) => {});
 
 pool.query(
-        "CREATE TABLE comercios (id INT NOT NULL AUTO_INCREMENT, nombre VARCHAR(45) NOT NULL, descripcion VARCHAR(45) NOT NULL, tipo VARCHAR(45) NOT NULL,lat VARCHAR(45) NOT NULL,long VARCHAR(45) NOT NULL, PRIMARY KEY (id));", (err, res) => {});
+        "CREATE TABLE comercios (id INT NOT NULL AUTO_INCREMENT, nombre VARCHAR(45) NOT NULL, descripcion VARCHAR(45) NOT NULL, tipo VARCHAR(45) NOT NULL,lat VARCHAR(45) NOT NULL,lng VARCHAR(45) NOT NULL, PRIMARY KEY (id));", (err, res) => {});
     
 
 module.exports = pool;
