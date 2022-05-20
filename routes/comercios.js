@@ -11,6 +11,11 @@ router.get('/add', (req, res) => {
     else res.redirect('users/singin');
 });
 
+router.get('/all', async (req, res) => {
+    const comercios = await comerciosController.getAllComercios();
+    res.json({'comercios': comercios});
+});
+
 router.post('/check',  async (req, res) => {
     let mail = req.body.mail
     var admin = await userController.isAdmin(mail);
@@ -46,6 +51,18 @@ router.get('/list', async (req, res) => {
     console.log(comercios[0].nombre)
 
     res.render('comercios/gestionar-comercio', {
+        comercios,
+        listname: 'Comercios'
+    });
+
+});
+
+router.get('/', async (req, res) => {
+    const comercios = await comerciosController.getAllComercios();
+
+    console.log(comercios[0].nombre)
+
+    res.render('comercios/consulta-comercio', {
         comercios,
         listname: 'Comercios'
     });
