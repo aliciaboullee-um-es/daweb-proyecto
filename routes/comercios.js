@@ -51,6 +51,21 @@ router.post('/add',  async (req, res) => {
     res.json({ type: 'ok', alerta: { tipo: 'alert-danger', msg: 'Registro correcto' } });
 });
 
+router.post('/change',  async (req, res) => {
+
+    let nombre = req.body.nombre
+    let descripcion = req.body.descripcion
+    let tipo = req.body.tipo
+    let lat = req.body.lat
+    let lng = req.body.lng
+    let oldname = req.body.oldname
+
+
+    await comerciosController.updateComercio(nombre, descripcion, tipo, lat, lng,oldname);
+
+    res.json({ type: 'ok', alerta: { tipo: 'alert-danger', msg: 'Registro correcto' } });
+});
+
 router.get('/list', async (req, res) => {
     const comercios = await comerciosController.getAllComercios();
 

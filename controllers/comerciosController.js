@@ -25,6 +25,11 @@ class ComerciosController {
         await ComerciosRepository.deleteComercio(nombre);
         
     }
+
+    static async updateComercio(nombre, descripcion, tipo, lat, lng, oldname) {
+        var c = new Comercio(nombre, lat, lng,descripcion,tipo);
+        await ComerciosRepository.update(c,oldname);
+    }
 }
 
 module.exports = ComerciosController;

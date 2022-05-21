@@ -121,20 +121,23 @@ class ComerciosRepository {
     }
   }
 
-  static async update(comercio) {
+  static async update(comercio,oldname) {
+    console.log(comercio)
+    console.log(oldname)
     try {
       await pool
         .promise()
         .query(
-          "UPDATE comercios SET nombre = ?, descripcion = ?, tipo = ?, lat = ?, long = ? WHERE nombre = ?",
+          "UPDATE comercios SET nombre = ?, descripcion = ?, tipo = ?, lat = ?, lng = ? WHERE nombre = ?",
           [
             comercio.nombre,
             comercio.descripcion,
             comercio.tipo,
-            comercio.lat,
-            comercio.long
+            comercio.latitud,
+            comercio.longitud,
+            oldname,
           ]
-        );
+        ).then(resultado => {console.log(resultado)})
     } catch (error) {
       throw error;
     }
