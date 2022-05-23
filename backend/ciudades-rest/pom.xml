@@ -21,6 +21,20 @@
 
 	<dependencies>
 	
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jdk8 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.datatype</groupId>
+		    <artifactId>jackson-datatype-jsr310</artifactId>
+		    <version>2.13.2</version>
+		</dependency>
+	
+		<!-- Retrofit -->
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+	
 		<!-- RABBITMQ -->
 		<dependency>
 			<groupId>com.rabbitmq</groupId>
