@@ -10,6 +10,7 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<script src="/src/assets/js/crear-comercio.js"></script>
 	</head>
 	<body class="is-preload homepage">
 		<div id="page-wrapper">
@@ -30,13 +31,13 @@
 							<li><a href="/">Inicio</a></li>
 
 							<li><a href="#">Aparcamientos</a></li>
-							<li><a href="sitiosinteres">Sitios de interés</a></li>
+							<li><a href="/sitiosinteres">Sitios de interés</a></li>
 							<li class="current">
 								<a  href="#">Comercios</a>
 								<ul>
-									<li><a href="comercios/add">Crear comercios</a></li>
-									<li><a href="comercios/list">Gestionar comercios</a></li>
-									<li><a href="comercios">Consultar comercios</a></li>
+									<li><a href="/comercios/add">Crear comercios</a></li>
+									<li><a href="/comercios/list">Gestionar comercios</a></li>
+									<li><a href="/comercios">Consultar comercios</a></li>
 								</ul>
 							</li>
 
@@ -178,36 +179,5 @@
 		<script src="/src/assets/js/util.js"></script>
 		<script src="/src/assets/js/main.js"></script>
 		<script src="/src/assets/js/comercios.js"></script>
-
-		<script>
-// Initialize and add the map
-async function initMap() {
-  // The location of Uluru
-  let uluru = {lat: 36.735053, lng: -4.609028};
-  // The map, centered at Uluru
-  let map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 13,
-    center: uluru,
-
-  });
-
-        //Se añade el marker
-       var marker1 = new google.maps.Marker({
-          position: {lat: 36.735053, lng: -4.609028}, 
-          map: map,
-		  draggable: true
-        });
-
-  google.maps.event.addListener(marker1, 'dragend', function() {
-
-	$("#lat-comercio").val(marker1.getPosition().lat())
-	$("#long-comercio").val(marker1.getPosition().lng())
-	  
-  //alert('Latitud = '+marker1.getPosition().lat()+ ', Longitud = '+marker1.getPosition().lng());
-});
-}
-
-  window.initMap = initMap;
-</script>
 	</body>
 </html>

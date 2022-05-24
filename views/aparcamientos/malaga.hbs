@@ -8,9 +8,10 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="../stylesheets/css/map.css">
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-		<script type="module" src="../javascripts/aparcamientos-malaga.js"></script>
+		<script type="module" src="../javascripts/aparcamientos.js"></script>
 		<link rel="stylesheet" href="../stylesheets/css/star.css">
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<link rel="stylesheet" href="../stylesheets/css/opiniones.css">
 	</head>
 	<body class="is-preload homepage">
 		<div id="page-wrapper">
@@ -35,9 +36,9 @@
 							<li>
 								<a href="#">Comercios</a>
 								<ul>
-									<li><a href="comercios/add">Crear comercios</a></li>
-									<li><a href="comercios/list">Gestionar comercios</a></li>
-									<li><a href="comercios">Consultar comercios</a></li>
+									<li><a href="/comercios/add">Crear comercios</a></li>
+									<li><a href="/comercios/list">Gestionar comercios</a></li>
+									<li><a href="/comercios">Consultar comercios</a></li>
 								</ul>
 							</li>
 
@@ -59,6 +60,16 @@
                 <div id="map">
 					
                 </div>
+				<div class="container-lg">
+					<div class="row">
+						<div id="formOpinion" class="col-lg-6">
+
+						</div>
+						<div id="tablon" class="col-lg-6">
+							
+						</div>
+					</div>
+				</div>
             </div>
 
 			<!-- Footer -->
@@ -80,6 +91,9 @@
 
 				</div>
         </div>
+		<script text="text/javascript">
+		window.localStorage.setItem('ciudad','e11646ce-b584-4147-92b4-69f6d3c19780')
+		</script>
 		<script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo6BSiPHlxWfnP_blL9MbHwBxXsoAhEMI&callback=initMap&v=weekly"
       defer

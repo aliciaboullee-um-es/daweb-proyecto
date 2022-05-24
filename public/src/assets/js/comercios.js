@@ -15,9 +15,16 @@ function addComercio(e) {
         body: JSON.stringify({'nombre': name, 'descripcion':descripcion, 'tipo':tipo, 'lat':lat, 'lng':lng })})
         .then(resultado => {return resultado.json()})
         .then(fjson => {
-            if(fjson['type'] == 'ok')
+            if(fjson['type'] == 'ok'){
+                console.log("Se ha enviado");
+                fetch('http://localhost:8080/api/opiniones',{
+                    method:'post',                    
+                    redirect : 'follow',
+                    headers : new Headers({'Content-Type':'application/json'}),
+                    body: JSON.stringify({'url': 'http://localhost:3000/comercios/'+name })
+                })
                 return swal("Operación exitosa", "Se ha completado el registro correctamente.", "success");
-            else 
+            } else 
                 return swal("Operación fallida", "El registro se ha interrumpido.", "error");
         })
 

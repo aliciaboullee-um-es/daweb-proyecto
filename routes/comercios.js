@@ -8,7 +8,7 @@ router.get('/add', (req, res) => {
     if(userController.getCurrentUser() != undefined){
         res.render('comercios/crear-comercio', {title : 'Comercios'});
     }
-    else res.redirect('users/singin');
+    else res.redirect('/users/singin');
 });
 
 router.get('/all', async (req, res) => {
@@ -44,8 +44,6 @@ router.post('/add',  async (req, res) => {
     let lat = req.body.lat
     let lng = req.body.lng
 
-    console.log("Entro")
-
     await comerciosController.createComercio(nombre, descripcion, tipo, lat, lng);
 
     res.json({ type: 'ok', alerta: { tipo: 'alert-danger', msg: 'Registro correcto' } });
@@ -69,8 +67,6 @@ router.post('/change',  async (req, res) => {
 router.get('/list', async (req, res) => {
     const comercios = await comerciosController.getAllComercios();
 
-    console.log(comercios[0].nombre)
-
     res.render('comercios/gestionar-comercio', {
         comercios,
         listname: 'Comercios'
@@ -80,8 +76,6 @@ router.get('/list', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const comercios = await comerciosController.getAllComercios();
-
-    console.log(comercios[0].nombre)
 
     res.render('comercios/consulta-comercio', {
         comercios,

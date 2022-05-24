@@ -1,30 +1,8 @@
-
-function getSitiosInteres(){
-
-  fetch('http://localhost:8082/api/ciudades/29839653-ef8f-44bb-af5b-6765d17b400c/aparcamientos',{
-    method: 'GET',
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'accept': 'application/json'
-    }
-  })
-  .then(res => res.json())
-  .then(res => res.sitios)
-  .then(res => console.log(res.length))
-  .catch( err => console.error(err));
-}
-
 // Initialize and add the map
 async function initMap() {
-    // The location of Uluru
-    const uluru = { lat: 37.6713, lng: -1.69879 };
-    // The map, centered at Uluru
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 13,
-      center: uluru,
-    });
+    let idCiudad = window.localStorage.getItem('ciudad');
     
-    let sitios = await fetch('http://localhost:8082/api/ciudades/29839653-ef8f-44bb-af5b-6765d17b400c/aparcamientos',{
+    let ciudad = await fetch('http://localhost:8082/api/ciudades/'+idCiudad,{
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -33,13 +11,23 @@ async function initMap() {
     })
     .then(res => res.json())
     .then(res => {
+
+    // The location of Uluru
+    const uluru = { lat: res['latitud'], lng: res['longitud']}
+    //const uluru = { lat: 37.6713, lng: -1.69879 };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 13,
+      center: uluru,
+    });
+
       let sitios = res.aparcamientos;
       let markers = [];
     
       for(let i=0; i<sitios?.length-1 || 0;i++){
         if (typeof(sitios) !== 'undefined') {
 
-        let links = "";
+       /* let links = "";
         let linkExternos = sitios[i]['resumen']['linkExternos'];
 
         if (linkExternos !== undefined){
@@ -53,22 +41,22 @@ async function initMap() {
             }
         }
       }
-        }
+        }*/
        
 
 
-        let pos = { lat: sitios[i]['resumen']['latitud'], lng: sitios[i]['resumen']['longitud'] };
+        let pos = { lat: sitios[i]['latitud'], lng: sitios[i]['longitud'] };
         
 
         //Dialogo de marker
         const contentString ='<div id="content">' +
         '<div id="siteNotice">' +
         "</div>" +
-        '<h1  style="font-size: 1.5em;" id="firstHeading" class="firstHeading">' + sitios[i]['resumen']['direccion'] +'</h1>' +
+        '<h1  style="font-size: 1.5em;" id="firstHeading" class="firstHeading">' + sitios[i]['direccion'] +'</h1>' +
         '<div id="bodyContent">' + "<br>" + 
         '<p>Attribution: Lorca ' +
         
-        links +
+        //links +
         ".</p>" +
         "</div>" +
         "</div>";
@@ -80,7 +68,7 @@ async function initMap() {
         markers.push(new google.maps.Marker({
           position: pos,
           map: map,
-          title: sitios[i]['resumen']['nombre']
+          title: sitios[i]['nombre']
         }));
 
         //LIstener que abre el dialogo
@@ -94,10 +82,10 @@ async function initMap() {
         });
       }
     }
-  })
+      })
     .catch( err => console.error(err));
     
-
+    
   }
 
   function valorar(urlSitio){
@@ -159,9 +147,9 @@ const today = new Date(timeElapsed);
     
 
     //En vez de url deberia ser el nombre del aparcamiento
-    let formulario = '<h2 style="font-size: 1.7em;"> Valoraciones </h2>' +
+    let formulario = '<br><h2 style="font-size: 1.7em;margin-left:1.1em"> Valoraciones </h2>' +
     '<br> <br>'+
-    '<div id="formCrearOpinion" class"crearOpinion">' +
+    '<div id="formCrearOpinion" style="margin-left:1.1em" class"crearOpinion">' +
     '<label for="comentario">Comentario:</label>' + '<textarea id="comentario" placeholder="Introduzca un comentario sobre este aparcamiento" type="textarea" maxlength="300"></textarea>  <br>  '+
     '<label for="clasificacion">Calificar:</label>' +  
     '<p id="clasificacion" class="clasificacion" style="padding-right: 438px;"> '+
@@ -202,6 +190,6 @@ function cargarEstrellas(calificacion){
   return cadenaEstrellas;
 }
 
-
+  window.cargarOpiniones = cargarOpiniones;
   window.valorar = valorar;
   window.initMap = initMap;

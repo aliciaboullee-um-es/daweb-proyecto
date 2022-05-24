@@ -56,6 +56,10 @@ public class Programa {
 		for (SitioInteres sti : sitios) {
 			sti.setId(UUID.randomUUID().toString());
 			ciudad.getSitios().add(sti);
+			Opinion opinion = new Opinion();
+			opinion.setUrl(sti.getUrlWikipedia());
+			Response<Void> respuesta = service.createOpinion(opinion).execute();
+			if(!respuesta.isSuccessful()) System.out.println(respuesta);
 		}
 
 		String id = repositorio.add(ciudad);
@@ -99,7 +103,10 @@ public class Programa {
 		for (SitioInteres sti : sitiosMalaga) {
 			sti.setId(UUID.randomUUID().toString());
 			malaga.getSitios().add(sti);
-
+			Opinion opinion = new Opinion();
+			opinion.setUrl(sti.getUrlWikipedia());
+			Response<Void> respuesta = service.createOpinion(opinion).execute();
+			if(!respuesta.isSuccessful()) System.out.println(respuesta);
 		}
 		
 		id = repositorio.add(malaga);
@@ -141,7 +148,10 @@ public class Programa {
 		for (SitioInteres sti : sitios3) {
 			sti.setId(UUID.randomUUID().toString());
 			sta.getSitios().add(sti);
-
+			Opinion opinion = new Opinion();
+			opinion.setUrl(sti.getUrlWikipedia());
+			Response<Void> respuesta = service.createOpinion(opinion).execute();
+			if(!respuesta.isSuccessful()) System.out.println(respuesta);
 		}
 
 		id = repositorio.add(sta);
@@ -183,7 +193,10 @@ public class Programa {
 		for (SitioInteres sti : sitios4) {
 			sti.setId(UUID.randomUUID().toString());
 			vg.getSitios().add(sti);
-
+			Opinion opinion = new Opinion();
+			opinion.setUrl(sti.getUrlWikipedia());
+			Response<Void> respuesta = service.createOpinion(opinion).execute();
+			if(!respuesta.isSuccessful()) System.out.println(respuesta);
 		}
 
 		id = repositorio.add(vg);
